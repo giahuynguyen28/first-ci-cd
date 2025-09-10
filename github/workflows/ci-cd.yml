@@ -1,4 +1,4 @@
-name: NestJS CI/CD Pipeline
+name: NestJS CI/CD to Render
 
 on:
   push:
@@ -7,27 +7,34 @@ on:
     branches: [main]
 
 jobs:
-  build-test:
+  build-test-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout code từ GitHub
+      # 1️⃣ Checkout code
       - uses: actions/checkout@v3
 
-      # 2️⃣ Setup Node.js version 18
+      # 2️⃣ Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
-      # 3️⃣ Cài dependencies
+      # 3️⃣ Install dependencies
       - name: Install dependencies
         run: npm ci
 
-      # 4️⃣ Build project NestJS
+      # 4️⃣ Build NestJS app
       - name: Build application
         run: npm run build
 
-      # 5️⃣ Chạy e2e test (có thể bỏ nếu bạn muốn cực kỳ đơn giản)
+      # 5️⃣ Run e2e test (optional, demo CI)
       - name: Run e2e tests
         run: npm run test:e2e
+
+      # 6️⃣ Deploy to Render (CD)
+      - name: Deploy to Render
+        uses: render-examples/deploy-to-render@v1
+        with:
+          api-key: ${{ secrets.RENDER_API_KEY }}
+          service-id: ${{ secrets.RENDER_SERVICE_ID }}
