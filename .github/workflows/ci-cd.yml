@@ -34,7 +34,7 @@ jobs:
 
       # 6️⃣ Deploy to Render (CD)
       - name: Deploy to Render
-        uses: render-examples/deploy-to-render@v1
+        uses: johnbeynon/render-deploy-action@v0.0.8
         with:
           api-key: ${{ secrets.RENDER_API_KEY }}
           service-id: ${{ secrets.RENDER_SERVICE_ID }}
