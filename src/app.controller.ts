@@ -15,6 +15,7 @@ export class AppController {
   }
   @Get('version')
   getVersion(): string {
-    return 'hehe';
+    return 'hehe
   }
+
 }
