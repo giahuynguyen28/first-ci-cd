@@ -11,10 +11,10 @@ export class AppController {
   }
   @Get('health')
   healthCheck(): string {
-    return 'OK;
+    return 'OK';
   }
   @Get('version')
   getVersion(): string {
-    return 'hehe';
+    return 'heheeee';
   }
 }
