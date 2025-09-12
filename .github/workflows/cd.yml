@@ -1,13 +1,11 @@
-name: NestJS CI/CD to Render
+name: NestJS CD
 
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
 
 jobs:
-  build-test-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -28,11 +26,7 @@ jobs:
       - name: Build application
         run: npm run build
 
-      # 5️⃣ Run e2e test (optional, demo CI)
-      - name: Run e2e tests
-        run: npm run test:e2e
-
-      # 6️⃣ Deploy to Render (CD)
+      # 5️⃣ Deploy to Render
       - name: Deploy to Render
         uses: johnbeynon/render-deploy-action@v0.0.8
         with:

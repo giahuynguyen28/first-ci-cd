@@ -13,4 +13,8 @@ export class AppController {
   healthCheck(): string {
     return 'OK;
   }
+  @Get('version')
+  getVersion(): string {
+    return 'hehe';
+  }
 }
