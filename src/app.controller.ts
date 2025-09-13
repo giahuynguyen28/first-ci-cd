@@ -15,6 +15,6 @@ export class AppController {
   }
   @Get('version')
   getVersion(): string {
-    return 'heheeee test ci cd';
+    return 'heheeee';
   }
 }
